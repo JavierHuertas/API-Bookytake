@@ -1,0 +1,20 @@
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: 'metrica123'
+    url: jdbc:mysql://localhost/tfg_v1?useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+  jackson:
+    locale: es_ES
+    time-zone: Europe/Madrid
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: create-drop
+  profiles:
+    active: 'local'
