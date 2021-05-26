@@ -1,8 +1,11 @@
 package com.bokytake.api.converter;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.bokytake.api.dao.IProductosPedidosRepository;
 import com.bokytake.api.dto.PedidosDTO;
 import com.bokytake.api.entity.Pedidos;
 
@@ -16,12 +19,50 @@ public class PedidosDTOConverter implements IGenericConverter<Pedidos, PedidosDT
 
 	@Autowired
 	ProductosDTOConverter proDTOConvert;
+	@Autowired
+	TiendaDTOConverter tiendaDTOconverter;
+	@Autowired
+	UsuarioPedidoDTOConverter usuarioDTOconverter;
+	@Autowired
+	EstadosDTOConverter estadosDTOconverter;
+
+	@Autowired
+	ProdPediConverter converterProPed;
+	@Autowired
+	IProductosPedidosRepository productos;
+
+	// buscar en la tabla poductospedidos por id
 
 	@Override
 	public PedidosDTO apply(final Pedidos t) {
 
-		return new PedidosDTO(t.getId(), t.getEstados(), t.getTienda(), t.getUsuarioPedido(), t.getFreservas(),
-				t.getFrecogida(), t.getImporte());
+		final PedidosDTO pedido = new PedidosDTO();
+
+		pedido.setTienda(tiendaDTOconverter.convert(t.getTienda()).getNombre());
+
+		pedido.setEstado(t.getEstados().getNombre());
+
+		pedido.setFreservas(new Date(t.getFreservas().getTime()));
+
+		pedido.setProductoses(converterProPed.convert(productos.productosPorId(t.getId())));
+
+		pedido.setImporte(t.getImporte());
+
+		pedido.setFrecogida(null);
+
+		pedido.setId(t.getId());
+
+		/*
+		 * new PedidosDTO(t.getId(), t.getEstados().getNombre(),
+		 * tiendaDTOconverter.convert(t.getTienda()),
+		 * usuarioDTOconverter.convert(t.getUsuarioPedido()), new
+		 * Date(t.getFreservas().getTime()), new Date(t.getFrecogida().getTime()),
+		 * t.getImporte());
+		 */
+
+		return new PedidosDTO(t.getId(), t.getEstados().getNombre(),
+				tiendaDTOconverter.convert(t.getTienda()).getNombre(), new Date(t.getFreservas().getTime()), null,
+				t.getImporte(), converterProPed.convert(productos.productosPorId(t.getId())));
 
 	}
 

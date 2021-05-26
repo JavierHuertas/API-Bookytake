@@ -59,6 +59,7 @@ public class Runner {
 		final Estados estado3 = estados.save(new Estados(3, "Aceptado"));
 		final Estados estado4 = estados.save(new Estados(4, "Denegado"));
 		final Estados estado5 = estados.save(new Estados(5, "Finalizado"));
+		final Estados estado6 = estados.save(new Estados(6, "En espera..."));
 
 		final Tienda t1 = tiendas.save(new Tienda("keytienda1", "federico1", "su casa1", "123456", "email@yoquese.es"));
 
@@ -102,11 +103,11 @@ public class Runner {
 		// "prueba2", "ramon2", "jjj2@prueba.es"));
 		final UsuarioPedido u3 = usuarios.save(new UsuarioPedido("usuarioKey3", "prueba3", "ramon3", "jjj3@prueba.es"));
 
-		final Pedidos p1 = new Pedidos(1, estado2, t4, u3, new Date(), new Date(), 150, u3.getEmail());
+		final Pedidos p1 = new Pedidos(estado2, t4, u3, new Date(), new Date(), 150);
 		pedidos.save(p1);
 
 		final ProductosPedidoId pP1 = new ProductosPedidoId(ptienda2.get(0).getId(), p1.getId());
-		final ProductosPedidos proPed = new ProductosPedidos(pP1, p1, ptienda2.get(0), 50);
+		final ProductosPedidos proPed = new ProductosPedidos(pP1, 50);
 
 		this.proPed.save(proPed);
 		// proPed.

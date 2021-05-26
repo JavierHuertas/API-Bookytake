@@ -56,7 +56,7 @@ public class ProductosController {
 		return new ResponseEntity<>(response, HttpStatus.CREATED);
 	}
 
-	@PutMapping("/editar/{id}")
+	@PutMapping("/editar")
 	@ResponseBody
 	public ResponseEntity<?> editarProducto(@RequestBody final ProductosDTO producto) {
 		((ProductoService) cc).editarProducto(producto);

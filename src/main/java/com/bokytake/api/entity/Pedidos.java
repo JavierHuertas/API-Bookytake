@@ -31,44 +31,40 @@ public class Pedidos implements java.io.Serializable {
 	private Date freservas;
 	private Date frecogida;
 	private float importe;
-	private String usuario;
 	private List<ProductosPedidos> productoses = new ArrayList<ProductosPedidos>(0);
 
 	public Pedidos() {
 	}
 
 	public Pedidos(final Estados estados, final Tienda tienda, final UsuarioPedido usuarioPedido, final Date freservas,
-			final Date frecogida, final float importe, final String usuario) {
+			final Date frecogida, final float importe) {
 		this.estados = estados;
 		this.tienda = tienda;
 		this.usuarioPedido = usuarioPedido;
 		this.freservas = freservas;
 		this.importe = importe;
-		this.usuario = usuario;
 		this.frecogida = frecogida;
 	}
 
 	public Pedidos(final Integer id, final Estados estados, final Tienda tienda, final UsuarioPedido usuarioPedido,
-			final Date freservas, final Date frecogida, final float importe, final String usuario) {
+			final Date freservas, final Date frecogida, final float importe) {
 		this.id = id;
 		this.estados = estados;
 		this.tienda = tienda;
 		this.usuarioPedido = usuarioPedido;
 		this.freservas = freservas;
 		this.importe = importe;
-		this.usuario = usuario;
 		this.frecogida = frecogida;
 	}
 
 	public Pedidos(final Estados estados, final Tienda tienda, final UsuarioPedido usuarioPedido, final Date freservas,
-			final Date frecogida, final float importe, final String usuario, final List<ProductosPedidos> productoses) {
+			final Date frecogida, final float importe, final List<ProductosPedidos> productoses) {
 		this.estados = estados;
 		this.tienda = tienda;
 		this.usuarioPedido = usuarioPedido;
 		this.freservas = freservas;
 		this.frecogida = frecogida;
 		this.importe = importe;
-		this.usuario = usuario;
 		this.productoses = productoses;
 	}
 
@@ -142,19 +138,10 @@ public class Pedidos implements java.io.Serializable {
 		this.importe = importe;
 	}
 
-	@Column(name = "usuario", nullable = false)
-	public String getUsuario() {
-		return this.usuario;
-	}
-
-	public void setUsuario(final String usuario) {
-		this.usuario = usuario;
-	}
-
 	/*
 	 * @OneToMany(fetch = FetchType.LAZY, mappedBy = "pedidos") public
 	 * List<ProductosPedidos> getProductoses() { return this.productoses; }
-	 *
+	 * 
 	 * public void setProductoses(final List<ProductosPedidos> productoses) {
 	 * this.productoses = productoses; }
 	 */

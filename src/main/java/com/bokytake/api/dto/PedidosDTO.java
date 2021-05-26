@@ -4,34 +4,42 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.bokytake.api.entity.Estados;
-import com.bokytake.api.entity.Tienda;
-import com.bokytake.api.entity.UsuarioPedido;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonInclude(Include.NON_NULL)
 public class PedidosDTO {
 
 	private Integer id;
-	private Estados estados;
-	private Tienda tienda;
-	private UsuarioPedido usuarioPedido;
+	private String Estado;
+	private String tienda;
+
+	@JsonInclude(Include.NON_NULL)
+	@JsonProperty("TiendaDTO")
+	private TiendaDTO TiendaDTO;
+
+	@JsonInclude(Include.NON_NULL)
+	@JsonProperty("UsuarioPedidoDTO")
+	private UsuarioPedidoDTO UsuarioPedidoDTO;
+
 	private Date freservas;
 	private Date frecogida;
 	private Float importe;
-	private List<ProductosDTO> productoses = new ArrayList<ProductosDTO>(0);
+	private List<ProductosCantidadDTO> productoses = new ArrayList<ProductosCantidadDTO>(0);
 
 	public PedidosDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
 	// con todos los argumentos
-
-	public PedidosDTO(final Integer id, final Estados estados, final Tienda tienda, final UsuarioPedido usuarioPedido,
-			final Date freservas, final Date frecogida, final Float importe) {
+	public PedidosDTO(final Integer id, final String EstadosDTO, final TiendaDTO TiendaDTO,
+			final UsuarioPedidoDTO UsuarioPedidoDTO, final Date freservas, final Date frecogida, final Float importe) {
 		super();
 		this.id = id;
-		this.estados = estados;
-		this.tienda = tienda;
-		this.usuarioPedido = usuarioPedido;
+		this.Estado = EstadosDTO;
+		this.TiendaDTO = TiendaDTO;
+		this.UsuarioPedidoDTO = UsuarioPedidoDTO;
 		this.freservas = freservas;
 		this.frecogida = frecogida;
 		this.importe = importe;
@@ -39,12 +47,13 @@ public class PedidosDTO {
 	}
 
 	// creacion v2
-	public PedidosDTO(final Estados estados, final Tienda tienda, final UsuarioPedido usuarioPedido,
-			final Date freservas, final Date frecogida, final Float importe, final List<ProductosDTO> productoses) {
+	public PedidosDTO(final String EstadosDTO, final TiendaDTO TiendaDTO, final UsuarioPedidoDTO UsuarioPedidoDTO,
+			final Date freservas, final Date frecogida, final Float importe,
+			final List<ProductosCantidadDTO> productoses) {
 		super();
-		this.estados = estados;
-		this.tienda = tienda;
-		this.usuarioPedido = usuarioPedido;
+		this.Estado = EstadosDTO;
+		this.TiendaDTO = TiendaDTO;
+		this.UsuarioPedidoDTO = UsuarioPedidoDTO;
 		this.freservas = freservas;
 		this.frecogida = frecogida;
 		this.importe = importe;
@@ -54,16 +63,44 @@ public class PedidosDTO {
 
 	// creacion
 
-	public PedidosDTO(final Estados estados, final Tienda tienda, final UsuarioPedido usuarioPedido,
-			final Date freservas, final Float importe, final List<ProductosDTO> productoses) {
+	public PedidosDTO(final String EstadosDTO, final TiendaDTO TiendaDTO, final UsuarioPedidoDTO UsuarioPedidoDTO,
+			final Date freservas, final Float importe, final List<ProductosCantidadDTO> productoses) {
 		super();
-		this.estados = estados;
-		this.tienda = tienda;
-		this.usuarioPedido = usuarioPedido;
+		this.Estado = EstadosDTO;
+		this.TiendaDTO = TiendaDTO;
+		this.UsuarioPedidoDTO = UsuarioPedidoDTO;
 		this.freservas = freservas;
 		this.importe = importe;
 
 		this.productoses = productoses;
+	}
+
+	public PedidosDTO(final Integer id, final String estado, final String tienda, final Date freservas,
+			final Date frecogida, final Float importe, final List<ProductosCantidadDTO> productoses) {
+		super();
+		this.id = id;
+		Estado = estado;
+		this.tienda = tienda;
+		this.freservas = freservas;
+		this.frecogida = frecogida;
+		this.importe = importe;
+		this.productoses = productoses;
+	}
+
+	public String getEstado() {
+		return Estado;
+	}
+
+	public void setEstado(final String estado) {
+		Estado = estado;
+	}
+
+	public String getTienda() {
+		return tienda;
+	}
+
+	public void setTienda(final String tienda) {
+		this.tienda = tienda;
 	}
 
 	public Integer getId() {
@@ -74,28 +111,28 @@ public class PedidosDTO {
 		this.id = id;
 	}
 
-	public Estados getEstados() {
-		return estados;
+	public String getEstadosDTO() {
+		return Estado;
 	}
 
-	public void setEstados(final Estados estados) {
-		this.estados = estados;
+	public void setEstadosDTO(final String EstadosDTO) {
+		this.Estado = EstadosDTO;
 	}
 
-	public Tienda getTienda() {
-		return tienda;
+	public TiendaDTO getTiendaDTO() {
+		return TiendaDTO;
 	}
 
-	public void setTienda(final Tienda tienda) {
-		this.tienda = tienda;
+	public void setTiendaDTO(final TiendaDTO TiendaDTO) {
+		this.TiendaDTO = TiendaDTO;
 	}
 
-	public UsuarioPedido getUsuarioPedido() {
-		return usuarioPedido;
+	public UsuarioPedidoDTO getUsuarioPedidoDTO() {
+		return UsuarioPedidoDTO;
 	}
 
-	public void setUsuarioPedido(final UsuarioPedido usuarioPedido) {
-		this.usuarioPedido = usuarioPedido;
+	public void setUsuarioPedidoDTO(final UsuarioPedidoDTO UsuarioPedidoDTO) {
+		this.UsuarioPedidoDTO = UsuarioPedidoDTO;
 	}
 
 	public Date getFreservas() {
@@ -122,11 +159,11 @@ public class PedidosDTO {
 		this.importe = importe;
 	}
 
-	public List<ProductosDTO> getProductoses() {
+	public List<ProductosCantidadDTO> getProductoses() {
 		return productoses;
 	}
 
-	public void setProductoses(final List<ProductosDTO> productoses) {
+	public void setProductoses(final List<ProductosCantidadDTO> productoses) {
 		this.productoses = productoses;
 	}
 

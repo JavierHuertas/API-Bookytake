@@ -5,13 +5,11 @@ import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+@JsonInclude(Include.NON_NULL)
 public class ProductosDTO implements Serializable {
 
-	@JsonInclude(Include.NON_EMPTY)
 	private Integer id;
-	@JsonInclude(Include.NON_EMPTY)
 	private TiendaDTO tienda;
-
 	private String nombre;
 	private float precio;
 	private Integer cantidad;
