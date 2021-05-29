@@ -5,16 +5,18 @@ public class UsuarioPedidoDTO {
 	private String id;
 	private String nombre;
 	private String email;
+	private String apellidos;
 
 	public UsuarioPedidoDTO() {
 		super();
 	}
 
-	public UsuarioPedidoDTO(final String id, final String nombre, final String email) {
+	public UsuarioPedidoDTO(final String id, final String nombre, final String email, final String apellidos) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.email = email;
+		this.apellidos = apellidos;
 	}
 
 	public UsuarioPedidoDTO(final String nombre, final String email) {
@@ -45,6 +47,14 @@ public class UsuarioPedidoDTO {
 
 	public void setEmail(final String email) {
 		this.email = email;
+	}
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(final String apellidos) {
+		this.apellidos = apellidos;
 	}
 
 }

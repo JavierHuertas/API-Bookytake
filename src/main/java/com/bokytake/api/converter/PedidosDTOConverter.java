@@ -42,7 +42,7 @@ public class PedidosDTOConverter implements IGenericConverter<Pedidos, PedidosDT
 
 		pedido.setEstado(t.getEstados().getNombre());
 
-		pedido.setFreservas(new Date(t.getFreservas().getTime()));
+		pedido.setFreservas(new Date(t.getfreserva().getTime()));
 
 		pedido.setProductoses(converterProPed.convert(productos.productosPorId(t.getId())));
 
@@ -61,7 +61,7 @@ public class PedidosDTOConverter implements IGenericConverter<Pedidos, PedidosDT
 		 */
 
 		return new PedidosDTO(t.getId(), t.getEstados().getNombre(),
-				tiendaDTOconverter.convert(t.getTienda()).getNombre(), new Date(t.getFreservas().getTime()), null,
+				tiendaDTOconverter.convert(t.getTienda()).getNombre(), new Date(t.getfreserva().getTime()), null,
 				t.getImporte(), converterProPed.convert(productos.productosPorId(t.getId())));
 
 	}

@@ -15,4 +15,7 @@ public interface IPedidosRepository extends JpaRepository<Pedidos, Integer> {
 	@Query("Select p from Pedidos p where p.usuarioPedido.id like :idUsuario")
 	List<Pedidos> pedidosUsuario(@Param("idUsuario") String idUsuario);
 
+	@Query("Select p from Pedidos p where p.tienda.id like :idTienda")
+	List<Pedidos> pedidosTienda(@Param("idTienda") String idTienda);
+
 }

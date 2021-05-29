@@ -19,13 +19,13 @@ public class UsuarioPedidosService implements IUsuarioPedidoService {
 
 	public void saveUsuario(final UsuarioPedidoDTO nuevoUsuario) {
 		final UsuarioPedido nuevo = new UsuarioPedido(nuevoUsuario.getId(), nuevoUsuario.getNombre(),
-				nuevoUsuario.getEmail());
+				nuevoUsuario.getApellidos(), nuevoUsuario.getEmail());
 		usuarioRepo.save(nuevo);
 	}
 
 	// cuiudado con el email y los apellidos (Por ahora solo se cambia el nombre)
 	public void modificarusuario(final UsuarioPedidoDTO editado) {
-		usuarioRepo.editarUsuario(editado.getId(), editado.getNombre());// , editado.getEmail()
+		usuarioRepo.editarUsuario(editado.getId(), editado.getNombre(), editado.getApellidos());// , editado.getEmail()
 	}
 
 }

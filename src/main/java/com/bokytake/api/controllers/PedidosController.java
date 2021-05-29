@@ -43,4 +43,10 @@ public class PedidosController {
 		return new ResponseEntity<>(servicio.pedidosPorUsuario(id), HttpStatus.OK);
 	}
 
+	@GetMapping("/tienda/{id}")
+	@ResponseBody
+	public ResponseEntity<List<PedidosDTO>> getPedidosTienda(@PathVariable final String id) {
+		return new ResponseEntity<>(servicio.pedidosPorUsuario(id), HttpStatus.OK);
+	}
+
 }

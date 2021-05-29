@@ -11,7 +11,7 @@ public class UsuarioPedidoDTOConverter implements IGenericConverter<UsuarioPedid
 	@Override
 	public UsuarioPedidoDTO apply(final UsuarioPedido t) {
 
-		return new UsuarioPedidoDTO(t.getId(), t.getNombre(), t.getEmail());
+		return new UsuarioPedidoDTO(t.getId(), t.getNombre(), t.getApellidos(), t.getEmail());
 	}
 
 }

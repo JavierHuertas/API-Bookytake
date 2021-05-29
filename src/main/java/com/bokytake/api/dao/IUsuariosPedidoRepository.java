@@ -14,9 +14,11 @@ import com.bokytake.api.entity.UsuarioPedido;
 public interface IUsuariosPedidoRepository extends JpaRepository<UsuarioPedido, String> {
 
 	@Transactional
-	@Query("update UsuarioPedido up set nombre = :nombre  where  up.id = :id ") // apellidos= :apellido
+	@Query("update UsuarioPedido up set nombre = :nombre, apellidos= :apellido  where  up.id = :id ") // apellidos=
+																										// :apellido
 	@Modifying
-	public void editarUsuario(@Param("id") String id, @Param("nombre") String nombre);// , @Param("apellido") String
-																						// apellido
+	public void editarUsuario(@Param("id") String id, @Param("nombre") String nombre,
+			@Param("apellido") String apellido);// , @Param("apellido") String
+	// apellido
 
 }

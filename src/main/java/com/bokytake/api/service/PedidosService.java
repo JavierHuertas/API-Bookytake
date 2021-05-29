@@ -83,8 +83,11 @@ public class PedidosService {
 	}
 
 	public List<PedidosDTO> pedidosPorUsuario(final String idUsuario) {
-
 		return pedidoConverter.convert(repository.pedidosUsuario(idUsuario));
+	}
+
+	public List<PedidosDTO> pedidosPorTienda(final String idTienda) {
+		return pedidoConverter.convert(repository.pedidosUsuario(idTienda));
 	}
 
 }

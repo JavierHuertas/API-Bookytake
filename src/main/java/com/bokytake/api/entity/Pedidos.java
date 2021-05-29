@@ -28,7 +28,7 @@ public class Pedidos implements java.io.Serializable {
 	private Estados estados;
 	private Tienda tienda;
 	private UsuarioPedido usuarioPedido;
-	private Date freservas;
+	private Date freserva;
 	private Date frecogida;
 	private float importe;
 	private List<ProductosPedidos> productoses = new ArrayList<ProductosPedidos>(0);
@@ -36,33 +36,33 @@ public class Pedidos implements java.io.Serializable {
 	public Pedidos() {
 	}
 
-	public Pedidos(final Estados estados, final Tienda tienda, final UsuarioPedido usuarioPedido, final Date freservas,
+	public Pedidos(final Estados estados, final Tienda tienda, final UsuarioPedido usuarioPedido, final Date freserva,
 			final Date frecogida, final float importe) {
 		this.estados = estados;
 		this.tienda = tienda;
 		this.usuarioPedido = usuarioPedido;
-		this.freservas = freservas;
+		this.freserva = freserva;
 		this.importe = importe;
 		this.frecogida = frecogida;
 	}
 
 	public Pedidos(final Integer id, final Estados estados, final Tienda tienda, final UsuarioPedido usuarioPedido,
-			final Date freservas, final Date frecogida, final float importe) {
+			final Date freserva, final Date frecogida, final float importe) {
 		this.id = id;
 		this.estados = estados;
 		this.tienda = tienda;
 		this.usuarioPedido = usuarioPedido;
-		this.freservas = freservas;
+		this.freserva = freserva;
 		this.importe = importe;
 		this.frecogida = frecogida;
 	}
 
-	public Pedidos(final Estados estados, final Tienda tienda, final UsuarioPedido usuarioPedido, final Date freservas,
+	public Pedidos(final Estados estados, final Tienda tienda, final UsuarioPedido usuarioPedido, final Date freserva,
 			final Date frecogida, final float importe, final List<ProductosPedidos> productoses) {
 		this.estados = estados;
 		this.tienda = tienda;
 		this.usuarioPedido = usuarioPedido;
-		this.freservas = freservas;
+		this.freserva = freserva;
 		this.frecogida = frecogida;
 		this.importe = importe;
 		this.productoses = productoses;
@@ -110,13 +110,13 @@ public class Pedidos implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "freservas", nullable = false, length = 19)
-	public Date getFreservas() {
-		return this.freservas;
+	@Column(name = "freserva", nullable = false, length = 19)
+	public Date getfreserva() {
+		return this.freserva;
 	}
 
-	public void setFreservas(final Date freservas) {
-		this.freservas = freservas;
+	public void setfreserva(final Date freserva) {
+		this.freserva = freserva;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -141,7 +141,7 @@ public class Pedidos implements java.io.Serializable {
 	/*
 	 * @OneToMany(fetch = FetchType.LAZY, mappedBy = "pedidos") public
 	 * List<ProductosPedidos> getProductoses() { return this.productoses; }
-	 * 
+	 *
 	 * public void setProductoses(final List<ProductosPedidos> productoses) {
 	 * this.productoses = productoses; }
 	 */
