@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.bokytake.api.tfg</groupId>
 	<artifactId>bok-y-take</artifactId>
-	<version>0.0.1</version>
+	<version>0.1.1</version>
 	<name>bokytake</name>
 	<description>Lab Spring Boot 2 App Example</description>
 	<properties>
